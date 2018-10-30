@@ -1,0 +1,26 @@
+#include <string>
+
+#ifndef CHORD_H
+#define CHORD_H
+class Chord{
+private:
+	std::string label;
+	float p1;
+	float p2;
+	float p3;
+
+public:
+	Chord(std::string label, float p1, float p2, float p3);
+
+	Chord(const Chord& original);
+
+	~Chord();
+
+	std::string getLabel();
+	float getP1();
+	float getP2();
+	float getP3();
+
+};
+
+#endif  // CHORD_H
