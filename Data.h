@@ -7,9 +7,8 @@
 
 class Data{
 private:
-	std::vector<std::string> split(std::string strToSplit, char delimeter);
-	Chord parse(const std::ifstream& line);
-	std::vector<Chord> GData;
+	float* average(std::vector<std::string>);
+	hasht<Chord> GData = hasht<Chord>(7); //Cambiar apropiadamente
 public:
 	Data();
 	~Data();
