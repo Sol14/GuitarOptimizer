@@ -13,8 +13,6 @@
   <VirtualDirectory Name="src">
     <File Name="hasht.h"/>
     <File Name="main.cpp"/>
-    <File Name="Data.h"/>
-    <File Name="Data.cpp"/>
     <File Name="Chord.h"/>
     <File Name="Chord.cpp"/>
   </VirtualDirectory>

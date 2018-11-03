@@ -1,7 +1,3 @@
-Debug/main.cpp.o: main.cpp Data.h hasht.h Chord.h
-
-Data.h:
-
-hasht.h:
+Debug/main.cpp.o: main.cpp Chord.h
 
 Chord.h:

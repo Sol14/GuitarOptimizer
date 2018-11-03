@@ -1,8 +1,8 @@
-#include <iostream>
-#include "Data.h"
+#include "Chord.h"
+#include <fstream>
 
-int main(int argc, char **argv)
-{
-	Data D = Data();
-	return 0;
+int main(int argc, char* argv[]){
+	
+
+	
 }
