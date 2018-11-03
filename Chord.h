@@ -7,6 +7,7 @@ class Chord{
 private:
 	std::string label;
 	float position[3];
+	void average(std::vector<std::string> data);
 	
 public:
 //Getters

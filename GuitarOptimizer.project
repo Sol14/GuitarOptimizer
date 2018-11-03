@@ -6,12 +6,14 @@
     </Plugin>
   </Plugins>
   <VirtualDirectory Name="Data">
-    <File Name="Data/PosicionesDeGuitarra.csv"/>
+    <File Name="Data/One.txt"/>
+    <File Name="Data/Posiciones de guitarra.csv"/>
   </VirtualDirectory>
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="src">
-    <File Name="hasht.h"/>
+    <File Name="Optimizer.cpp"/>
+    <File Name="Optimizer.h"/>
     <File Name="main.cpp"/>
     <File Name="Chord.h"/>
     <File Name="Chord.cpp"/>

@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=solrak
-Date                   :=02/11/18
+Date                   :=03/11/18
 CodeLitePath           :=/home/solrak/.codelite
 LinkerName             :=g++
 SharedObjectLinkerName :=g++ -shared -fPIC
@@ -60,7 +60,7 @@ AS       := as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/Chord.cpp$(ObjectSuffix) $(IntermediateDirectory)/main.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/Optimizer.cpp$(ObjectSuffix) $(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Chord.cpp$(ObjectSuffix) 
 
 
 
@@ -91,13 +91,13 @@ PreBuild:
 ##
 ## Objects
 ##
-$(IntermediateDirectory)/Chord.cpp$(ObjectSuffix): Chord.cpp $(IntermediateDirectory)/Chord.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/solrak/Documents/CodeLite_Workspace/GuitarOptimizer/Chord.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Chord.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/Chord.cpp$(DependSuffix): Chord.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Chord.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Chord.cpp$(DependSuffix) -MM Chord.cpp
+$(IntermediateDirectory)/Optimizer.cpp$(ObjectSuffix): Optimizer.cpp $(IntermediateDirectory)/Optimizer.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/solrak/Documents/CodeLite_Workspace/GuitarOptimizer/Optimizer.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Optimizer.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Optimizer.cpp$(DependSuffix): Optimizer.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Optimizer.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Optimizer.cpp$(DependSuffix) -MM Optimizer.cpp
 
-$(IntermediateDirectory)/Chord.cpp$(PreprocessSuffix): Chord.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Chord.cpp$(PreprocessSuffix) Chord.cpp
+$(IntermediateDirectory)/Optimizer.cpp$(PreprocessSuffix): Optimizer.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Optimizer.cpp$(PreprocessSuffix) Optimizer.cpp
 
 $(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main.cpp$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/solrak/Documents/CodeLite_Workspace/GuitarOptimizer/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
@@ -106,6 +106,14 @@ $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
 
 $(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) main.cpp
+
+$(IntermediateDirectory)/Chord.cpp$(ObjectSuffix): Chord.cpp $(IntermediateDirectory)/Chord.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/solrak/Documents/CodeLite_Workspace/GuitarOptimizer/Chord.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Chord.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Chord.cpp$(DependSuffix): Chord.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Chord.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Chord.cpp$(DependSuffix) -MM Chord.cpp
+
+$(IntermediateDirectory)/Chord.cpp$(PreprocessSuffix): Chord.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Chord.cpp$(PreprocessSuffix) Chord.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
