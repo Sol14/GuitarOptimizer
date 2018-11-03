@@ -5,14 +5,10 @@ Optimizer::Optimizer(std::ifstream& data, std::ifstream& song){
 	std::string line;
 	while(std::getline(data, line)){
 		C = Chord(line);
-	this->GData[C.getLabel()] = C;
+		this->GData[C.getLabel()] = C;
 	}
-	
-	std::string temp;
-	int c = 1;
-	while(std::getline(song, temp)){
-		this->song.push_back(Chord(GData.find(temp)->second));
-		c++;
+	while(std::getline(song, line)){
+		this->song.push_back(Chord(GData.find(line)->second));
 	}
 }
 
