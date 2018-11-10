@@ -9,11 +9,11 @@ Chord::Chord(){
 	}
 }
 
-Chord::Chord(std::string label, float p1, float p2, float p3){
+Chord::Chord(std::string label, float p0, float p1, float p2){
 	this->label = label;
-	this->position[0] = p1;
-	this->position[1] = p2;
-	this->position[2] = p3;
+	this->position[0] = p0;
+	this->position[1] = p1;
+	this->position[2] = p2;
 }
 
 Chord::Chord(const Chord& original){
@@ -45,15 +45,15 @@ std::string Chord::getLabel(){
 	return this->label;
 }
 
-float Chord::getP1(){
+float Chord::getP0(){
 	return this->position[0];
 }
 
-float Chord::getP2(){
+float Chord::getP1(){
 	return this->position[1];
 }
 
-float Chord::getP3(){
+float Chord::getP2(){
 	return this->position[2];
 }
 

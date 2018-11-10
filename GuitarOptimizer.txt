@@ -1,1 +1,1 @@
-./Debug/Optimizer.cpp.o ./Debug/main.cpp.o ./Debug/Chord.cpp.o
+./Debug/Chord.cpp.o ./Debug/main.cpp.o ./Debug/Optimizer.cpp.o

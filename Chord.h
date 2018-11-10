@@ -12,14 +12,14 @@ private:
 public:
 //Getters
 	std::string getLabel();
+	float getP0();
 	float getP1();
 	float getP2();
-	float getP3();
 
 //Construction
 	Chord();
 	Chord(std::string line);
-	Chord(std::string label, float p1, float p2, float p3);
+	Chord(std::string label, float p0, float p1, float p2);
 	Chord(const Chord& original);
 	
 //Destruction
