@@ -6,6 +6,7 @@
     </Plugin>
   </Plugins>
   <VirtualDirectory Name="Data">
+    <File Name="Data/Test.txt"/>
     <File Name="Data/One.txt"/>
     <File Name="Data/Posiciones de guitarra.csv"/>
   </VirtualDirectory>

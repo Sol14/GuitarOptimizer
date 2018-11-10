@@ -15,12 +15,15 @@ float minimal;
 std::vector<Chord> song;
 std::vector<int> solution;
 
-void abs(float x); //Para no importar <CMath>
-float getOptime(int i, float min);
-
+float abs(float x); //Para no importar <CMath>
+float recursiveOptime(unsigned int i, float last, float min);
 public:
 	Optimizer(std::ifstream& data, std::ifstream& song);
 	~Optimizer();
+	
+	void getOptime();
+	void printSolution();
+	void printSong();
 };
 
 #endif // OPTIMIZER_H
