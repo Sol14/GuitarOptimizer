@@ -36,7 +36,7 @@ float Optimizer::recursiveOptime(unsigned int i, float last, float min){
 			this->minimal = min;
 			return min;
 		}
-		return -1;
+		return std::numeric_limits<float>::max();
 	}
 	else{//Candidate def
 		if(this->song[i].getP0() != -1){
@@ -73,13 +73,13 @@ float Optimizer::recursiveOptime(unsigned int i, float last, float min){
 
 void Optimizer::printSolution(){
 	for(unsigned int i = 0; i < this->song.size(); i++){
-		std::cout << "(" << this->song[i].getLabel() << "," << this->solution[i] << ")" << std::endl;
+		std::cout << "( " << this->song[i].getLabel() << ", " << this->solution[i] << " )" << std::endl;
 	}
 	std::cout << this->minimal << std::endl; 
 }
 
 void Optimizer::printSong(){
 	for(unsigned int i = 0; i < song.size(); i++){
-		std::cout << "(" << song[i].getLabel() << "," << song[i].getP0() << "," << song[i].getP1() << "," << song[i].getP2() << ")" << std::endl;
+		std::cout << "( " << song[i].getLabel() << ", " << song[i].getP0() << ", " << song[i].getP1() << ", " << song[i].getP2() << " )" << std::endl;
 	}
 }
