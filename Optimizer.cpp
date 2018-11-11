@@ -25,7 +25,7 @@ float Optimizer::abs(float x){
 }
 
 void Optimizer::getOptime(){
-		std::cout << "Minimal: " << recursiveOptime(0, 0, 0) << std::endl;
+	std::cout << "Minimal: " << recursiveOptime(0, 0, 0) << std::endl;
 }
 
 float Optimizer::recursiveOptime(unsigned int i, float last, float min){
@@ -51,16 +51,17 @@ float Optimizer::recursiveOptime(unsigned int i, float last, float min){
 			if(i != 0) nlast = song[i].getP2();
 			c2 = recursiveOptime(i + 1, song[i].getP2(), min + abs(last - nlast));
 		}
-		if(c0 < c1 && c0 < c2 && c0 == minimal){
-			solution[i] = 1;
+		float m = 0;
+		if(c0 < c1 && c0 < c2 && c0){
+			if(c0 == minimal) solution[i] = 1;
 			return c0;
 		}
-		if(c1 < c0 && c1 < c2 && c1 == minimal){
-			solution[i] = 2;
+		if(c1 < c0 && c1 < c2 && c1){
+			if(c1 == minimal) solution[i] = 2;
 			return c1;
 		}
-		if(c2 < c0 && c2 < c1 && c2 == minimal){
-			solution[i] = 3;
+		if(c2 < c0 && c2 < c1 && c2){
+			if(c2 == minimal) solution[i] = 3;
 			return c2;
 		}
 		
