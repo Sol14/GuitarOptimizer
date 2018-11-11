@@ -12,9 +12,9 @@ Optimizer::Optimizer(std::ifstream& data, std::ifstream& song){
 		this->song.push_back(Chord(GData.find(line)->second));	//Song init
 	}
 	for(unsigned int i = 0; i < this->song.size(); i++){
-		solution.push_back(0);
+		solution.push_back(0);									//Solution init
 	}
-	this->minimal = -1; 	//Minimal init -1 //Infinite value
+	this->minimal = std::numeric_limits<float>::max(); 	//Minimal init -1 //Infinite value
 }
 
 Optimizer::~Optimizer(){
@@ -25,49 +25,45 @@ float Optimizer::abs(float x){
 }
 
 void Optimizer::getOptime(){
-		recursiveOptime(0, 0, 0);
+		std::cout << "Minimal: " << recursiveOptime(0, 0, 0) << std::endl;
 }
 
 float Optimizer::recursiveOptime(unsigned int i, float last, float min){
-	float c0, c1, c2;
-	c0 = c1 = c2 = std::numeric_limits<float>::max();
 	if(i == this->song.size()){ //Base
-		if(min <= this->minimal || this->minimal == -1){
+		if(min <= this->minimal){
 			this->minimal = min;
-			return min;
 		}
-		return std::numeric_limits<float>::max();
+		return min;
 	}
 	else{//Candidate def
-		if(this->song[i].getP0() != -1){
-			float tmp = min + abs(last - this->song[i].getP0());
-			if (i == 0) tmp = min;
-			c0 = recursiveOptime(i+1, this->song[i].getP0(), tmp);
+	float c0, c1, c2;
+	c0 = c1 = c2 = std::numeric_limits<float>::max();
+		float nlast = 0;
+		if(song[i].getP0() != -1){
+			if(i != 0) nlast = song[i].getP0();
+			c0 = recursiveOptime(i + 1, song[i].getP0(), min + abs(last - nlast));
+		}
+		if(song[i].getP1() != -1){
+			if(i != 0) nlast = song[i].getP1();
+			c1 = recursiveOptime(i + 1, song[i].getP1(), min + abs(last - nlast));
+		}
+		if(song[i].getP2() != -1){
+			if(i != 0) nlast = song[i].getP2();
+			c2 = recursiveOptime(i + 1, song[i].getP2(), min + abs(last - nlast));
+		}
+		if(c0 < c1 && c0 < c2 && c0 == minimal){
+			solution[i] = 1;
+			return c0;
+		}
+		if(c1 < c0 && c1 < c2 && c1 == minimal){
+			solution[i] = 2;
+			return c1;
+		}
+		if(c2 < c0 && c2 < c1 && c2 == minimal){
+			solution[i] = 3;
+			return c2;
 		}
 		
-		if(this->song[i].getP1() != -1){
-			float tmp = min + abs(last - this->song[i].getP1());
-			if (i == 0) tmp = min;
-			c1 = recursiveOptime(i+1, this->song[i].getP1(), tmp);
-		}
-		
-		if(this->song[i].getP2() != -1){
-			float tmp = min + abs(last - this->song[i].getP2());
-			if (i == 0) tmp = min;
-			c2 = recursiveOptime(i+1, this->song[i].getP2(), tmp);
-		}
-	}
-	if(c0 < c1 && c0 < c2){
-		if(c0 == this->minimal)this->solution[i] = 0;
-		return c0;
-	}
-	else if(c1 < c0 && c0 < c2){
-		if(c1 == this->minimal)this->solution[i] = 1;
-		return c1;
-	}
-	else{
-		if(c2 == this->minimal)this->solution[i] = 2;
-		return c2;
 	}
 }
 
