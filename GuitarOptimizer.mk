@@ -5,22 +5,22 @@
 ## Debug
 ProjectName            :=GuitarOptimizer
 ConfigurationName      :=Debug
-WorkspacePath          :=/home/solrak/Documents/CodeLite_Workspace
-ProjectPath            :=/home/solrak/Documents/CodeLite_Workspace/GuitarOptimizer
+WorkspacePath          :=/home/solrak/Documents/GuitarOptimizer
+ProjectPath            :=/home/solrak/Documents/GuitarOptimizer
 IntermediateDirectory  :=./Debug
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-User                   :=solrak
-Date                   :=11/11/18
+User                   :=Luis Carlos Quesada Rodríguez
+Date                   :=13/11/18
 CodeLitePath           :=/home/solrak/.codelite
-LinkerName             :=g++
-SharedObjectLinkerName :=g++ -shared -fPIC
+LinkerName             :=/usr/bin/g++
+SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
 ObjectSuffix           :=.o
 DependSuffix           :=.o.d
-PreprocessSuffix       :=.o.i
-DebugSwitch            :=-gstab
+PreprocessSuffix       :=.i
+DebugSwitch            :=-g 
 IncludeSwitch          :=-I
 LibrarySwitch          :=-l
 OutputSwitch           :=-o 
@@ -31,7 +31,7 @@ OutputFile             :=$(IntermediateDirectory)/$(ProjectName)
 Preprocessors          :=
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
-PreprocessOnlySwitch   :=-E 
+PreprocessOnlySwitch   :=-E
 ObjectsFileList        :="GuitarOptimizer.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
@@ -47,13 +47,13 @@ LibPath                := $(LibraryPathSwitch).
 ## Common variables
 ## AR, CXX, CC, AS, CXXFLAGS and CFLAGS can be overriden using an environment variables
 ##
-AR       := ar rcus
-CXX      := g++
-CC       := gcc
+AR       := /usr/bin/ar rcu
+CXX      := /usr/bin/g++
+CC       := /usr/bin/gcc
 CXXFLAGS :=  -g -O0 -Wall $(Preprocessors)
 CFLAGS   :=  -g -O0 -Wall $(Preprocessors)
 ASFLAGS  := 
-AS       := as
+AS       := /usr/bin/as
 
 
 ##
@@ -92,7 +92,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/Chord.cpp$(ObjectSuffix): Chord.cpp $(IntermediateDirectory)/Chord.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/solrak/Documents/CodeLite_Workspace/GuitarOptimizer/Chord.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Chord.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/solrak/Documents/GuitarOptimizer/Chord.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Chord.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/Chord.cpp$(DependSuffix): Chord.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Chord.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Chord.cpp$(DependSuffix) -MM Chord.cpp
 
@@ -100,7 +100,7 @@ $(IntermediateDirectory)/Chord.cpp$(PreprocessSuffix): Chord.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Chord.cpp$(PreprocessSuffix) Chord.cpp
 
 $(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/solrak/Documents/CodeLite_Workspace/GuitarOptimizer/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/solrak/Documents/GuitarOptimizer/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/main.cpp$(DependSuffix) -MM main.cpp
 
@@ -108,7 +108,7 @@ $(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) main.cpp
 
 $(IntermediateDirectory)/Optimizer.cpp$(ObjectSuffix): Optimizer.cpp $(IntermediateDirectory)/Optimizer.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/solrak/Documents/CodeLite_Workspace/GuitarOptimizer/Optimizer.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Optimizer.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/solrak/Documents/GuitarOptimizer/Optimizer.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Optimizer.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/Optimizer.cpp$(DependSuffix): Optimizer.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Optimizer.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Optimizer.cpp$(DependSuffix) -MM Optimizer.cpp
 

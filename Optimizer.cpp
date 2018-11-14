@@ -35,36 +35,32 @@ float Optimizer::recursiveOptime(unsigned int i, float last, float min){
 		}
 		return min;
 	}
-	else{//Candidate def
 	float c0, c1, c2;
 	c0 = c1 = c2 = std::numeric_limits<float>::max();
-		float nlast = 0;
-		if(song[i].getP0() != -1){
-			if(i != 0) nlast = song[i].getP0();
-			c0 = recursiveOptime(i + 1, song[i].getP0(), min + abs(last - nlast));
-		}
-		if(song[i].getP1() != -1){
-			if(i != 0) nlast = song[i].getP1();
-			c1 = recursiveOptime(i + 1, song[i].getP1(), min + abs(last - nlast));
-		}
-		if(song[i].getP2() != -1){
-			if(i != 0) nlast = song[i].getP2();
-			c2 = recursiveOptime(i + 1, song[i].getP2(), min + abs(last - nlast));
-		}
-		float m = 0;
-		if(c0 < c1 && c0 < c2 && c0){
-			if(c0 == minimal) solution[i] = 1;
-			return c0;
-		}
-		if(c1 < c0 && c1 < c2 && c1){
-			if(c1 == minimal) solution[i] = 2;
-			return c1;
-		}
-		if(c2 < c0 && c2 < c1 && c2){
-			if(c2 == minimal) solution[i] = 3;
-			return c2;
-		}
-		
+	float nlast = 0;								//Init case
+	if(song[i].getP0() != -1){
+		if(i != 0) nlast = song[i].getP0();
+		c0 = recursiveOptime(i + 1, song[i].getP0(), min + abs(last - nlast));
+	}
+	if(song[i].getP1() != -1){
+		if(i != 0) nlast = song[i].getP1();
+		c1 = recursiveOptime(i + 1, song[i].getP1(), min + abs(last - nlast));
+	}
+	if(song[i].getP2() != -1){
+		if(i != 0) nlast = song[i].getP2();
+		c2 = recursiveOptime(i + 1, song[i].getP2(), min + abs(last - nlast));
+	}
+	if(c0 < c1 && c0 < c2 && c0){
+		if(c0 == minimal) solution[i] = 1;
+		return c0;
+	}
+	if(c1 < c0 && c1 < c2 && c1){
+		if(c1 == minimal) solution[i] = 2;
+		return c1;
+	}
+	else{
+		if(c2 == minimal) solution[i] = 3;
+		return c2;
 	}
 }
 
