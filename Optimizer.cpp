@@ -15,9 +15,26 @@ Optimizer::Optimizer(std::ifstream& data, std::ifstream& song){
 		solution.push_back(0);									//Solution init
 	}
 	this->minimal = std::numeric_limits<float>::max(); 	//Minimal init -1 //Infinite value
+	
+	//Init matrices
+	this->F = new float*[this->song.size()];
+	this->E = new float*[this->song.size()];
+	for(unsigned int i = 0; i <= this->song.size(); i++){
+		F[i] = new float[3];
+		E[i] = new float[3];
+		for(int j = 0; j < 3; j++){
+			F[i][j] = E[i][j] = 0;
+		}
+	}
 }
 
 Optimizer::~Optimizer(){
+	for(unsigned int i = 0; i <= this->song.size(); i++){
+		delete E[i];
+		delete F[i];
+	}
+	delete E;
+	delete F;
 }
 
 float Optimizer::abs(float x){

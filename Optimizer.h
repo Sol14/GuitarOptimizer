@@ -12,6 +12,8 @@ class Optimizer{
 private:
 std::map<std::string, Chord> GData;
 float minimal;
+float ** F;
+float ** E;
 std::vector<Chord> song;
 std::vector<int> solution;
 
