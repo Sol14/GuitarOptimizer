@@ -57,6 +57,10 @@ float Chord::getP2(){
 	return this->position[2];
 }
 
+float Chord::centroid(int i){
+	return this->position[i];
+}
+
 
 //Helper functions
 

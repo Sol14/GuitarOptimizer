@@ -23,7 +23,8 @@ public:
 	Optimizer(std::ifstream& data, std::ifstream& song);
 	~Optimizer();
 	
-	void getOptime();
+	float getExhaustive();
+	float getDinamyc();
 	void printSolution();
 	void printSong();
 };

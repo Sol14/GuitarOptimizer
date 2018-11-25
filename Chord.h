@@ -15,6 +15,7 @@ public:
 	float getP0();
 	float getP1();
 	float getP2();
+	float centroid(int i);
 
 //Construction
 	Chord();

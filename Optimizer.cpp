@@ -23,26 +23,42 @@ Optimizer::Optimizer(std::ifstream& data, std::ifstream& song){
 		F[i] = new float[3];
 		E[i] = new float[3];
 		for(int j = 0; j < 3; j++){
-			F[i][j] = E[i][j] = 0;
+			F[i][j] = 0;
+			E[i][j] = 0;
 		}
 	}
 }
 
 Optimizer::~Optimizer(){
 	for(unsigned int i = 0; i <= this->song.size(); i++){
-		delete E[i];
-		delete F[i];
+		//delete F[i];
+		//delete E[i];
 	}
-	delete E;
-	delete F;
 }
 
 float Optimizer::abs(float x){
 	return x >= 0 ? x : x * -1;
 }
 
-void Optimizer::getOptime(){
-	std::cout << "Minimal: " << recursiveOptime(0, 0, 0) << std::endl;
+float Optimizer::getExhaustive(){
+	return recursiveOptime(0, 0, 0);
+}
+
+float Optimizer::getDinamyc(){
+	int n = song.size();
+	for(int i = n - 2; i >= 0; i--){		//Movimiento de profundidad
+		for(int j = 0; j < 3; j++){		//Movimiento lateral
+			float emin = F[i+1][0] + abs(song[i].centroid(j) - song[i+1].centroid(0));					//Minimo de la etapa
+			for(int k = 1; k < 3; k++){		//Aqui se elige una de las 3 opciones
+				float nemin = F[i+1][k] + abs(song[i].centroid(j) - song[i+1].centroid(k));
+				if(nemin < emin){
+					emin = nemin;
+				}
+				F[i][j] = emin;
+			}
+		}
+	}
+	return F[0][0];
 }
 
 float Optimizer::recursiveOptime(unsigned int i, float last, float min){
@@ -82,14 +98,30 @@ float Optimizer::recursiveOptime(unsigned int i, float last, float min){
 }
 
 void Optimizer::printSolution(){
-	for(unsigned int i = 0; i < this->song.size(); i++){
+	for(unsigned int i = 0; i < this->song.size() - 1; i++){
 		std::cout << "( " << this->song[i].getLabel() << ", " << this->solution[i] << " )" << std::endl;
 	}
-	std::cout << this->minimal << std::endl; 
+	std::cout << this->minimal << std::endl;
+	
+		for(unsigned int i = 0; i < song.size(); i++){
+		for(int j = 0; j < 3; j++){
+			std::cout << this->E[i][j] << " ";
+		}
+		std::cout << std::endl;
+	}
+	
+	std::cout << "========" << std::endl;
+	
+	for(unsigned int i = 0; i < song.size(); i++){
+		for(int j = 0; j < 3; j++){
+			std::cout << this->F[i][j] << " ";
+		}
+		std::cout << std::endl;
+	}
 }
 
 void Optimizer::printSong(){
-	for(unsigned int i = 0; i < song.size(); i++){
+	for(unsigned int i = 0; i < song.size() - 1; i++){
 		std::cout << "( " << song[i].getLabel() << ", " << song[i].getP0() << ", " << song[i].getP1() << ", " << song[i].getP2() << " )" << std::endl;
 	}
 }
