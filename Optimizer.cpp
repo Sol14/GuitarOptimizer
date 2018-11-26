@@ -30,7 +30,6 @@ Optimizer::Optimizer(std::ifstream& data, std::ifstream& song){
 }
 
 Optimizer::~Optimizer(){
-	std::cout << "Yes" << std::endl;
 	for(unsigned int i = 0; i <= this->song.size(); i++){
 		//delete F[i];
 		//delete E[i];
@@ -123,26 +122,32 @@ float Optimizer::recursiveOptime(unsigned int i, float last, float min){
 }
 
 void Optimizer::printSolution(){
+	std::cout << "Pares ordenados por exhaustiva" << std::endl;
 	for(unsigned int i = 0; i < this->song.size() - 1; i++){
 		std::cout << "( " << this->song[i].getLabel() << ", " << this->solution[i] << " )" << std::endl;
 	}
-	std::cout << this->minimal << std::endl;
-	
-		for(unsigned int i = 0; i < song.size(); i++){
-		for(int j = 0; j < 3; j++){
-			std::cout << this->E[i][j] << " ";
-		}
-		std::cout << std::endl;
-	}
-	
-	std::cout << "========" << std::endl;
-	
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << "Matriz Sigma" << std::endl;
+	std::cout << std::endl;
 	for(unsigned int i = 0; i < song.size(); i++){
 		for(int j = 0; j < 3; j++){
-			std::cout << this->F[i][j] << " ";
+			std::cout << this->E[i][j] << "    ";
 		}
 		std::cout << std::endl;
 	}
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << "Oraculo" << std::endl;
+	std::cout << std::endl;
+	for(unsigned int i = 0; i < song.size(); i++){
+		for(int j = 0; j < 3; j++){
+			std::cout << this->F[i][j] << "    ";
+		}
+		std::cout << std::endl;
+	}
+	std::cout << std::endl;
+	std::cout << std::endl;
 }
 
 void Optimizer::printSong(){

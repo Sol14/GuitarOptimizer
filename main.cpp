@@ -9,15 +9,22 @@ using namespace std;
 
 
 int main(int argc, char* argv[]){
-	ifstream file("/home/solrak/Documents/GuitarOptimizer/Data/Posiciones de guitarra.csv");
-	ifstream song("/home/solrak/Documents/GuitarOptimizer/Data/Test.txt");
+	ifstream file("/home/solrak/Documents/GuitarOptimizer/Data/Posiciones de guitarra.csv"); //Por parametro a futuro
+	ifstream song("/home/solrak/Documents/GuitarOptimizer/Data/Test.txt"); //Por parametro a futuro
 	Optimizer Op = Optimizer(file, song);
-	Op.getExhaustive();
+	
+	
+	cout << "Exhaustiva: " << Op.getExhaustive() << endl;
 	cout << "Dinamica: " << Op.getDynamic() << endl;
+	cout << endl;
 	Op.printSolution();
+	
+	
+	//Indicación del path Dinamico
 	vector<int> path = Op.getDynamicPath();
-	for(int i = 0; i < path.size(); i++){
-		cout << path[i] << endl;
+	cout << "Vector solucion dinamico" << endl;
+	for(int i = 0; i < path.size() - 1; i++){
+		cout << path[i] << ", ";
 	}
-	//Op.printSong();
+	cout << path[path.size() - 1] << endl;
 }
