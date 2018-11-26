@@ -30,10 +30,7 @@ Optimizer::Optimizer(std::ifstream& data, std::ifstream& song){
 }
 
 Optimizer::~Optimizer(){
-	for(unsigned int i = 0; i <= this->song.size(); i++){
-		//delete F[i];
-		//delete E[i];
-	}
+	//Añadir destructor
 }
 
 float Optimizer::abs(float x){
@@ -78,7 +75,7 @@ std::vector<int> Optimizer::getDynamicPath(){
 		}
 	}
 	path.push_back(p + 1);
-	for(unsigned int i = 0; i < this->song.size() - 2; i++){
+	for(unsigned int i = 0; i < this->song.size() - 1; i++){
 		p = E[i][p] - 1;
 		path.push_back(p + 1);
 	}
@@ -123,7 +120,8 @@ float Optimizer::recursiveOptime(unsigned int i, float last, float min){
 
 void Optimizer::printSolution(){
 	std::cout << "Pares ordenados por exhaustiva" << std::endl;
-	for(unsigned int i = 0; i < this->song.size() - 1; i++){
+	std::cout << std::endl;
+	for(unsigned int i = 0; i < this->song.size(); i++){
 		std::cout << "( " << this->song[i].getLabel() << ", " << this->solution[i] << " )" << std::endl;
 	}
 	std::cout << std::endl;

@@ -23,7 +23,8 @@ int main(int argc, char* argv[]){
 	//Indicación del path Dinamico
 	vector<int> path = Op.getDynamicPath();
 	cout << "Vector solucion dinamico" << endl;
-	for(int i = 0; i < path.size() - 1; i++){
+	cout << endl;
+	for(unsigned int i = 0; i < path.size() - 1; i++){
 		cout << path[i] << ", ";
 	}
 	cout << path[path.size() - 1] << endl;
