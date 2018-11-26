@@ -61,7 +61,29 @@ float Optimizer::getDynamic(){
 			}
 		}
 	}
-	return F[0][0];
+	float min = F[0][0];
+	for(int i = 1; i < 3; i++){
+		min = F[0][i] < min ? F[0][i] : min;
+	}
+	return min;
+}
+
+std::vector<int> Optimizer::getDynamicPath(){
+	std::vector<int>path;
+	int p = 0;
+	float min = F[0][0];
+	for(int i = 1; i < 3; i++){
+		if(F[0][i] < min){
+		min = F[0][i];
+		p = i;
+		}
+	}
+	path.push_back(p + 1);
+	for(unsigned int i = 0; i < this->song.size() - 2; i++){
+		p = E[i][p] - 1;
+		path.push_back(p + 1);
+	}
+	return path;
 }
 
 float Optimizer::recursiveOptime(unsigned int i, float last, float min){

@@ -25,6 +25,7 @@ public:
 	
 	float getExhaustive();
 	float getDynamic();
+	std::vector<int> getDynamicPath();
 	void printSolution();
 	void printSong();
 };

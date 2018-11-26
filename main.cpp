@@ -15,5 +15,9 @@ int main(int argc, char* argv[]){
 	Op.getExhaustive();
 	cout << "Dinamica: " << Op.getDynamic() << endl;
 	Op.printSolution();
+	vector<int> path = Op.getDynamicPath();
+	for(int i = 0; i < path.size(); i++){
+		cout << path[i] << endl;
+	}
 	//Op.printSong();
 }
