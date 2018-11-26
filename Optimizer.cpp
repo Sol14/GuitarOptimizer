@@ -11,17 +11,18 @@ Optimizer::Optimizer(std::ifstream& data, std::ifstream& song){
 	while(std::getline(song, line)){
 		this->song.push_back(Chord(GData.find(line)->second));	//Song init
 	}
-	for(unsigned int i = 0; i < this->song.size(); i++){
-		solution.push_back(0);									//Solution init
-	}
+	this->solution.resize(this->song.size());
+	//for(unsigned int i = 0; i < this->song.size(); i++){
+	//	solution.push_back(0);									//Solution init
+	//}
 	this->minimal = std::numeric_limits<float>::max(); 	//Minimal init -1 //Infinite value
 	
 	//Init matrices
 	this->F = new float*[this->song.size()];
-	this->E = new float*[this->song.size()];
-	for(unsigned int i = 0; i <= this->song.size(); i++){
+	this->E = new unsigned int*[this->song.size()];
+	for(unsigned int i = 0; i < this->song.size(); i++){
 		F[i] = new float[3];
-		E[i] = new float[3];
+		E[i] = new unsigned int[3];
 		for(int j = 0; j < 3; j++){
 			F[i][j] = 0;
 			E[i][j] = 0;
@@ -30,7 +31,12 @@ Optimizer::Optimizer(std::ifstream& data, std::ifstream& song){
 }
 
 Optimizer::~Optimizer(){
-	//Añadir destructor
+	for (int i = this->song.size() - 1; i >= 0; i--){
+		delete[] E[i];
+		delete[] F[i];
+	}
+	delete F;
+	delete E;
 }
 
 float Optimizer::abs(float x){
@@ -149,7 +155,7 @@ void Optimizer::printSolution(){
 }
 
 void Optimizer::printSong(){
-	for(unsigned int i = 0; i < song.size() - 1; i++){
+	for(unsigned int i = 0; i < song.size(); i++){
 		std::cout << "( " << song[i].getLabel() << ", " << song[i].getP0() << ", " << song[i].getP1() << ", " << song[i].getP2() << " )" << std::endl;
 	}
 }

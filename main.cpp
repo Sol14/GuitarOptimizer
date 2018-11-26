@@ -12,6 +12,7 @@ int main(int argc, char* argv[]){
 	ifstream file("/home/solrak/Documents/GuitarOptimizer/Data/Posiciones de guitarra.csv"); //Por parametro a futuro
 	ifstream song("/home/solrak/Documents/GuitarOptimizer/Data/Test.txt"); //Por parametro a futuro
 	Optimizer Op = Optimizer(file, song);
+	Op.printSong();
 	
 	
 	cout << "Exhaustiva: " << Op.getExhaustive() << endl;
