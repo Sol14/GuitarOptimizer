@@ -24,7 +24,7 @@ public:
 	~Optimizer();
 	
 	float getExhaustive();
-	float getDinamyc();
+	float getDynamic();
 	void printSolution();
 	void printSong();
 };

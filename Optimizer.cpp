@@ -30,6 +30,7 @@ Optimizer::Optimizer(std::ifstream& data, std::ifstream& song){
 }
 
 Optimizer::~Optimizer(){
+	std::cout << "Yes" << std::endl;
 	for(unsigned int i = 0; i <= this->song.size(); i++){
 		//delete F[i];
 		//delete E[i];
@@ -44,15 +45,17 @@ float Optimizer::getExhaustive(){
 	return recursiveOptime(0, 0, 0);
 }
 
-float Optimizer::getDinamyc(){
-	int n = song.size();
-	for(int i = n - 2; i >= 0; i--){		//Movimiento de profundidad
-		for(int j = 0; j < 3; j++){		//Movimiento lateral
-			float emin = F[i+1][0] + abs(song[i].centroid(j) - song[i+1].centroid(0));					//Minimo de la etapa
+float Optimizer::getDynamic(){
+	int n = song.size() - 1;
+	for(int i = n - 1; i >= 0; i--){		//Movimiento de profundidad 
+		for(int j = 2; j >= 0; j--){		//Movimiento lateral
+			float emin = F[i+1][0] + abs(song[i].centroid(j) - song[i+1].centroid(0));//Minimo de la etapa
+			E[i][j] = 1;
 			for(int k = 1; k < 3; k++){		//Aqui se elige una de las 3 opciones
 				float nemin = F[i+1][k] + abs(song[i].centroid(j) - song[i+1].centroid(k));
 				if(nemin < emin){
 					emin = nemin;
+					E[i][j] = k+1;
 				}
 				F[i][j] = emin;
 			}

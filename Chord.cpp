@@ -1,6 +1,7 @@
 #include <sstream>
 #include "Chord.h"
 #include <iostream>
+#include <limits>
 
 Chord::Chord(){
 	this->label = "";
@@ -35,6 +36,7 @@ Chord::Chord(std::string line){
 	}
 	this->label = data[0];
 	this->average(data);
+	maxSetter();
 }
 
 Chord::~Chord(){
@@ -79,5 +81,11 @@ void Chord::average(std::vector<std::string> data){
 		this->position[j] = counter == 0 ? -1 : this->position[j] / counter;
 		k += 7;
 		l += 7;
+	}
+}
+
+void Chord::maxSetter(){
+	for(int i = 0; i < 3; i++){
+		this->position[i] = this->position[i] == -1 ? std::numeric_limits<float>::max() : this->position[i];
 	}
 }
