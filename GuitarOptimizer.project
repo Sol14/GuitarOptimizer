@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CodeLite_Project Name="GuitarOptimizer" Version="10.0.0" InternalType="Console">
-  <VirtualDirectory Name="Tests"/>
   <Plugins>
     <Plugin Name="qmake">
       <![CDATA[00010001N0005Debug000000000000]]>
     </Plugin>
   </Plugins>
+  <VirtualDirectory Name="Tests"/>
   <VirtualDirectory Name="Data">
+    <File Name="Data/Boys Dont Cry"/>
     <File Name="Data/Test.txt"/>
     <File Name="Data/One.txt"/>
     <File Name="Data/Posiciones de guitarra.csv"/>
