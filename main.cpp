@@ -15,10 +15,9 @@ static timestamp_t get_timestamp (){
 }
 
 int main(int argc, char* argv[]){
-	ifstream file("/home/solrak/Documents/GuitarOptimizer/Data/Posiciones de guitarra.csv"); //Por parametro a futuro
-	ifstream song("/home/solrak/Documents/GuitarOptimizer/Data/Test.txt"); //Por parametro a futuro
+	ifstream file("../Data/Posiciones de guitarra.csv");
+	ifstream song("../Data/Test.txt"); //Por parametro a futuro
 	Optimizer Op = Optimizer(file, song);
-	Op.printSong();
     timestamp_t t0 = get_timestamp();
    // cout << "Exhaustiva: " << Op.getExhaustive() << endl;
     timestamp_t t1 = get_timestamp();
